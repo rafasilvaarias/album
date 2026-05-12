@@ -1,0 +1,52 @@
+{
+    "name": "Kick",
+    "samples": ["/samples/909kick.wav"],
+
+    "types": [
+        {
+            "name": "Ha",
+            "sample": 0,
+            "gain": 1,
+            "offset": 0,
+            "durationMin": 0.5, "durationMax": 1,
+            "probabilityMin": 0.9, "probabilityMax": 1,
+            "playbackRate": 1,
+            "reversed": 0
+        },
+        {
+            "name": "Ro",
+            "sample": 0,
+            "gainMin": 0.2, "gainMax": 0.8,
+            "offsetMin": 0.005, "offsetMax": 0.1,
+            "durationMin": 0.05, "durationMax": 0.1,
+            "probabilityMin": 0.3, "probabilityMax": 0.6,
+            "playbackRateMin": 0.85, "playbackRateMax": 1,
+            "reversed": 0
+        },
+        {
+            "name": "Re",
+            "sample": 0,
+            "gainMin": 0.4, "gainMax": 0.5,
+            "offset": 0,
+            "duration": 1,
+            "probabilityMin": 0.6, "probabilityMax": 0.9,
+            "playbackRateMin": 1, "playbackRateMax": 1.2,
+            "reversed": 1
+        }
+    ],
+
+    "sequences": [
+        [1, 0, 2, 0, 2, 1, 0, 2, 1, 0, 2, 2, 2, 2, 0, 2],
+        [1, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 2, 2],
+        [1,1,1,1]
+    ],
+
+    "metaSequences": [
+        [0,1],
+        [2,2,2,2]
+    ],
+
+    "interjections": [
+
+    ]
+}
