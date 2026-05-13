@@ -6,7 +6,7 @@
 
   // --- State ---
   let playing = $state(false);
-  let beat = $state(0);
+  let beat = $state(-1);
   let time = $state(0);
   let channel: Tone.ToneAudioNode;
   let sequencerReady = $state(false);
@@ -45,15 +45,11 @@
     Tone.Transport.scheduleRepeat((t) => {
       time = t;
       beat += 1;
-      console.log("Beat:", beat, "Time:", time);
+      //console.log("Beat:", beat, "Time:", time);
     }, "16n");
 
     Tone.Transport.start();
     playing = true;
-  }
-
-  function display(channel: number, info: { metaSequence: number; sequence: number; sample: string }) {
-    message[channel] = `${info.metaSequence} ${info.sequence} ${info.sample}`;
   }
 </script>
 
@@ -66,9 +62,6 @@
     metaSequence={0}
     {channel}
     {time}
-    onBeat={(info) => {
-      display(1, info);
-    }}
   />
 {/if}
 

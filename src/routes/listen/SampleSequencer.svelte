@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import * as Tone from "tone";
 
-  // --- Types ---
+  //Type
   type SampleType = {
     name: string;
     sample: number;
@@ -28,63 +28,58 @@
     samples: string[];
     types: SampleType[];
     sequences: (number | null)[][];
-    metaSequences: number[][];
+    metaSequences: { type: string; sequence: number[]; markovMatrix?: number[][] }[];
+    interjections?: { when: { sequences: (number)[]; beats: number[] }; probability: number; sequence: (number | null) [] | undefined }[];
   };
 
-  // --- Props ---
+  //Props
   let {
     sampleSchema,
     beat,
     metaSequence,
     channel,
     time,
-    onBeat,
   }: {
     sampleSchema: SampleSchema;
     beat: number;
     metaSequence: number;
     channel: Tone.ToneAudioNode;
     time: number;
-    onBeat: (info: { metaSequence: number; sequence: number; sample: string }) => void;
   } = $props();
 
-  // --- State ---   
+  //State 
   let sequence = 0;
   let samples: Tone.Player[] = [];
   let gainNode: Tone.Gain;
   let beatRef = 0;
   let ready = false;
+  let interjection: (number | null)[] | undefined;
 
-  // --- Helpers ---
+  //Helper functions
   function randomValue(min: number, max: number): number {
     return min + Math.random() * (max - min);
   }
-  function resolveRange(
-    exact?: number,
-    min?: number,
-    max?: number,
-    fallback = 1
-  ): number {
+  function resolveRange(exact?: number, min?: number, max?: number, fallback = 1): number {
     if (exact !== undefined) return exact;
     if (min !== undefined && max !== undefined) return randomValue(min, max);
     return fallback;
   }
 
-  const playlist = sampleSchema.metaSequences?.[metaSequence] ?? [0];
+  const playlist = sampleSchema.metaSequences?.[metaSequence]?.sequence ?? [0];
 
-  // --- Init: resolve probabilities ---
+  //Resolve sequences
   const resolvedSequences: ResolvedBeat[][] = sampleSchema.sequences.map((seq) =>
     seq.map((cell) => {
-      if (!cell || typeof cell !== "number") return null;
-      const type = cell - 1;
+      if (typeof cell !== "number") return null;
+      const type = cell;
       const t = sampleSchema.types[type];
       if (!t) return null;
       const probability = resolveRange(t.probability, t.probabilityMin, t.probabilityMax, 1);
-      return { type, probability };
+      return {type, probability};
     })
   );
 
-  // --- Setup ---
+  //Setup
   async function setup(): Promise<void> {
     await Tone.loaded();
     gainNode = new Tone.Gain(1).connect(channel);
@@ -94,26 +89,80 @@
     ready = true;
   }
 
-  // --- Play ---
+  //Function
   async function play(time: number): Promise<void> {
     if (!ready) return;
 
-    const seqList = sampleSchema.metaSequences[metaSequence];
-    const currentSeqIndex = seqList[sequence % seqList.length];
+    const seqList = sampleSchema.metaSequences[metaSequence]?.sequence ?? [0];
+    const metaType = sampleSchema.metaSequences[metaSequence]?.type ?? "sequential";
+    const currentSeqIndex = seqList[sequence % seqList.length]; //sequence is initialized in 0, which is the current sequence index
     const currentSeq = resolvedSequences[currentSeqIndex];
 
     beatRef = beat % currentSeq.length;
 
+    //Advance between sequences, guided by the metaSequence pattern
     if (beatRef === 0 && beat !== 0) {
-      sequence = (sequence + 1) % seqList.length;
+      if (metaType === "random") {
+        sequence = Math.floor(Math.random() * seqList.length);
+      } else if (metaType === "markovian" && sampleSchema.metaSequences[metaSequence].markovMatrix) {
+        const markovMatrix = sampleSchema.metaSequences[metaSequence].markovMatrix!;
+        const probabilities = markovMatrix[sequence % markovMatrix.length];
+        const total = probabilities.reduce((sum, p) => sum + p, 0);
+        let r = Math.random() * total;
+        for (let i = 0; i < probabilities.length; i++) {
+          r -= probabilities[i];
+          if (r <= 0) {
+            sequence = i;
+            break;
+          }
+        }
+      } else {
+        sequence = (sequence + 1) % seqList.length;
+      }
     }
 
-    const currentBeat = currentSeq[beatRef];
-    if (!currentBeat) return;
-    if (Math.random() >= currentBeat.probability) return;
-    const typeArray = sampleSchema.types[currentBeat.type];
-    if (!typeArray) return;
-    const player = samples[typeArray.sample];
+    //console.log(`Current Sequence Index: ${currentSeqIndex}, Beat Ref: ${beatRef}`);
+
+    //Check for interjections
+    if (sampleSchema.interjections && (!interjection || interjection.length === 0)) {
+      //console.log(`Checked!`);
+      for (const interjectionDef of sampleSchema.interjections) {
+        if (
+          interjectionDef.when.sequences.includes(currentSeqIndex) &&
+          interjectionDef.when.beats.includes(beatRef) &&
+          Math.random() < interjectionDef.probability
+        ) {
+          console.log(`Checked!`);
+          interjection = interjectionDef.sequence ? [...interjectionDef.sequence] : [];
+          break;
+        }
+      }
+    }
+
+    let typeArray: SampleType | undefined;
+
+    if (interjection && interjection.length > 0) {
+      console.log(`Interjection triggered!`, interjection);
+      if (interjection[0] === null) {
+        interjection.shift();
+        return;
+      }
+      typeArray = sampleSchema.types[interjection[0]];
+      interjection.shift();
+    } else {
+      interjection = undefined;
+      const currentBeat = currentSeq[beatRef];
+      if (!currentBeat) return;
+      if (Math.random() >= currentBeat.probability) return;
+      typeArray = sampleSchema.types[currentBeat.type];
+    }
+
+    if (!typeArray) {
+      console.warn(`Invalid type beat`);
+      return;
+    }
+    //Fetch the player of samples, based on the type of current bet
+    const player = samples[typeArray.sample]; 
     if (!player || !player.loaded) return;
 
     const gain         = resolveRange(typeArray.gain, typeArray.gainMin, typeArray.gainMax, 1);
@@ -132,20 +181,15 @@
     player.reverse = reversed;
     player.stop(time);
     player.start(time, offset, duration);
-
-    onBeat?.({
-      metaSequence,
-      sequence,
-      sample: sampleSchema.types[currentBeat.type].name,
-    });
   }
 
-  // --- Lifecycle ---
+  //Updating states
   onMount(() => {
     setup();
   });
 
   $effect(() => {
+    //console.log(`Beat: ${beat}, Time: ${time}`);
     play(time);
   });
 </script>

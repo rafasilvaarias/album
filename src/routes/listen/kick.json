@@ -29,24 +29,52 @@
             "gainMin": 0.4, "gainMax": 0.5,
             "offset": 0,
             "duration": 1,
-            "probabilityMin": 0.6, "probabilityMax": 0.9,
+            "probability": 1,
             "playbackRateMin": 1, "playbackRateMax": 1.2,
             "reversed": 1
         }
     ],
 
     "sequences": [
-        [1, 0, 2, 0, 2, 1, 0, 2, 1, 0, 2, 2, 2, 2, 0, 2],
-        [1, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 2, 2],
-        [1,1,1,1]
+        [0, null, 1, null, 1, 0, null, 1, 0, null, 1, 1, 1, 1, null, 1],
+        [0, 1, 1, 1, null, null, 1, null, 0, null, null, 1, null, null, 1, 2],
+        [0,1,1,1],
+        [0,1,null,1],
+        [0,0,0,0]
     ],
 
     "metaSequences": [
-        [0,1],
-        [2,2,2,2]
+        {
+            "type": "random",
+            "sequence": [0, 1]
+        },
+        {
+            "type": "markovian",
+            "sequence": [2, 3, 4],
+            "markovMatrix": [
+                [0.4, 0.4, 0.3],
+                [0.4, 0.4, 0.3],
+                [0, 0, 1]
+            ]
+        }
     ],
 
     "interjections": [
-
+        {
+            "when": {
+                "sequences":[0,1],
+                "beats": [4]
+            },
+            "probability": 0.1,
+            "sequence": [2,2,2,2]
+        },
+        {
+            "when": {
+                "sequences":[0,1],
+                "beats": [14]
+            },
+            "probability": 0.75,
+            "sequence": [null, null, null, null]
+        }
     ]
 }
