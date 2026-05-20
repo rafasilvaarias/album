@@ -1,80 +1,103 @@
 {
     "name": "Kick",
-    "samples": ["/samples/909kick.wav"],
-
+    "samples": ["/samples/909kick.wav", "/samples/MR10Kick01.wav"], 
     "types": [
+        {
+            "name": "HA",
+            "sample": 0,
+            "gain": 1,
+            "offset": 0.001,
+            "durationMin": 0.5, "durationMax": 1,
+            "probability": 1
+        },
+        {
+            "name": "o",
+            "sample": 0,
+            "gainMin": 0.5, "gainMax": 0.8,
+            "offsetMin": 0.01, "offsetMax": 0.03,
+            "duration": 0.05,
+            "probabilityMin": 0.33, "probabilityMax": 0.44
+        },
+        {
+            "name": "e",
+            "sample": 1,
+            "gainMin": 0.4, "gainMax": 0.5,
+            "offset": 0,
+            "duration": 0.4,
+            "probability": [0, 1, 1]
+        },
         {
             "name": "Ha",
             "sample": 0,
-            "gain": 1,
+            "gain": 0.8,
             "offset": 0,
-            "durationMin": 0.5, "durationMax": 1,
-            "probabilityMin": 0.9, "probabilityMax": 1,
-            "playbackRate": 1,
-            "reversed": 0
-        },
-        {
-            "name": "Ro",
-            "sample": 0,
-            "gainMin": 0.2, "gainMax": 0.8,
-            "offsetMin": 0.005, "offsetMax": 0.1,
-            "durationMin": 0.05, "durationMax": 0.1,
-            "probabilityMin": 0.3, "probabilityMax": 0.6,
-            "playbackRateMin": 0.85, "playbackRateMax": 1,
-            "reversed": 0
-        },
-        {
-            "name": "Re",
-            "sample": 0,
-            "gainMin": 0.4, "gainMax": 0.5,
-            "offset": 0,
-            "duration": 1,
-            "probability": 1,
-            "playbackRateMin": 1, "playbackRateMax": 1.2,
-            "reversed": 1
+            "durationMin": 0.2, "durationMax": 0.1,
+            "probability": [0, 1, 1]
         }
     ],
-
     "sequences": [
-        [0, null, 1, null, 1, 0, null, 1, 0, null, 1, 1, 1, 1, null, 1],
-        [0, 1, 1, 1, null, null, 1, null, 0, null, null, 1, null, null, 1, 2],
-        [0,1,1,1],
-        [0,1,null,1],
-        [0,0,0,0]
+        [0, [1,2], [null,2], [1,[null,1]], 3, [null,[1,1]],[3,2],[1,2]],
+        [[0,1], [2,null,1], [1,1], [2,[null,1]],3, [null,[2,1]],[1,1],2],
+        [[0,1], [2,null,1], [1,1], [2,[null,1]],3, [null,[2,1]],[1,1]],
+        [[0,0,0,0,0]]
     ],
-
     "metaSequences": [
         {
             "type": "random",
-            "sequence": [0, 1]
+            "sequence": [0,1,2]
         },
         {
             "type": "markovian",
-            "sequence": [2, 3, 4],
+            "sequence": [0, 1, 2, 3],
             "markovMatrix": [
-                [0.4, 0.4, 0.3],
-                [0.4, 0.4, 0.3],
-                [0, 0, 1]
+                [0.4, 0.4, 0.3, 0],
+                [0.4, 0.4, 0.3, 0],
+                [0, 0, 0, 1],
+                [0.5, 0.5, 0, 0]
             ]
         }
     ],
-
     "interjections": [
         {
             "when": {
-                "sequences":[0,1],
-                "beats": [4]
+                "sequences": [0],
+                "beats": [5,7]
             },
-            "probability": 0.1,
-            "sequence": [2,2,2,2]
-        },
-        {
-            "when": {
-                "sequences":[0,1],
-                "beats": [14]
-            },
-            "probability": 0.75,
-            "sequence": [null, null, null, null]
+            "probability": 0.66,
+            "sequence": [[
+                {
+                    "name": "(",
+                    "sample": 0,
+                    "gain": 0.1,
+                    "offsetMin": 0, "offsetMax": 0.01,
+                    "duration": 0.06,
+                    "probability": 1
+                },
+                {
+                    "name": "{",
+                    "sample": 0,
+                    "gain": 0.2,
+                    "offsetMin": 0, "offsetMax": 0.008,
+                    "duration": 0.06,
+                    "probability": 1
+                },
+                {
+                    "name": "[",
+                    "sample": 0,
+                    "gain": 0.3,
+                    "offsetMin": 0, "offsetMax": 0.02,
+                    "duration": 0.06,
+                    "probability": 1
+                },
+                {
+                    "name": "!",
+                    "sample": 0,
+                    "gain": 0.4,
+                    "offsetMin": 0, "offsetMax": 0.005,
+                    "duration": 0.06,
+                    "probability": 1
+                }
+            ]]
         }
     ]
 }

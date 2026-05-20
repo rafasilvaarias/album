@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import * as Tone from "tone";
-  import SampleSequencer from "./SampleSequencer.svelte";
+  import StochasticSequencer from "./StochasticSequencer.svelte";
   import kickSchema from "./kick.json";
 
   // --- State ---
@@ -10,8 +10,13 @@
   let time = $state(0);
   let channel: Tone.ToneAudioNode;
   let sequencerReady = $state(false);
+  let seed = Math.round(Math.random()*100000);
+  //let seed = 12345;
 
-  let message = $state(Array(4).fill(""));
+  let bpm = $state(87);
+  let subdivision = $state(2);
+
+  let message = $state<[number[], number, string[], number]>([[], 0, [], 0]);
 
   // --- Setup on mount ---
   onMount(async () => {
@@ -31,22 +36,20 @@
     if (playing) {
       Tone.Transport.stop();
       Tone.Transport.cancel();
-      beat = 0;
       playing = false;
       return;
     }
 
     await Tone.start();
 
-    Tone.Transport.bpm.value = 87;
-    beat = 0;
+    Tone.Transport.bpm.value = bpm;
 
     // Schedule a 16th-note repeating callback
     Tone.Transport.scheduleRepeat((t) => {
       time = t;
       beat += 1;
       //console.log("Beat:", beat, "Time:", time);
-    }, "16n");
+    }, (60 / bpm) / subdivision);
 
     Tone.Transport.start();
     playing = true;
@@ -56,20 +59,32 @@
 {#if sequencerReady}
   
 
-  <SampleSequencer
+  <StochasticSequencer
     sampleSchema={kickSchema}
     {beat}
-    metaSequence={0}
+    metaSequenceIndex={1}
     {channel}
     {time}
+    beatDuration={60 / bpm / subdivision}
+    seed={seed}
+    bind:message={message}
   />
 {/if}
 
 <div class="message">
-  <p class="pulsate">{message[0]}</p>
-  <p >{message[1]}</p>
-  <p >{message[2]}</p>
-  <p >{message[3]}</p>
+  <p >{beat % 8}</p>
+  <div class="messageDiv">
+    <div>
+      {#each message[0] as sequenceIndex, i}
+        <p class={i === message[1] ? "pulsate" : ""}>{sequenceIndex}</p>
+      {/each}
+    </div>
+    <div>
+      {#each message[2] as beatNames, i}
+        <p class={i+1 === message[3] ? "pulsate" : ""}>{beatNames}</p>
+      {/each}
+    </div>
+  </div>
 </div>
 
 <button
@@ -117,13 +132,50 @@
     color: #f00;
   }
 
-  .pulsate {
+  .messageDiv > div > .pulsate {
+    color: #fff;
     animation: pulsate 0.5s ease-out;
+    border: 0.5px solid transparent;
+  }
+
+  .messageDiv{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    margin: 2rem;
+    
+  }
+
+  .messageDiv > div {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    padding: 0px;
+   
+  }
+
+  .messageDiv > div > p {
+    color: #646464;
+    transition: color ease-in-out 0.1s;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dididid{
+     border: 0.3px solid #ccc;
   }
 
   @keyframes pulsate {
-    0%   { background-color: black; }
-    100% { background-color: transparent; }
+    0%   { background-color: transparent; border: 0.5px solid #444;}
+    100% { background-color: transparent; border: 0.5px solid transparent;}
   }
 
   .message {
