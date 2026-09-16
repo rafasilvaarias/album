@@ -1,0 +1,24 @@
+{
+    "name": "Harp",
+    "samplesFolder" : "/samples/",
+    "samples": ["guitarHard.wav", "guitarSoft.wav"],
+    "types": [
+    ],
+    "sequences": [
+        [null, null, null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,2,3]
+        }
+    ],
+    "interjections": [
+    ],
+    "mutations": [
+    ]
+}

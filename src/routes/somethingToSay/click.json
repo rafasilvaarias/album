@@ -1,0 +1,35 @@
+{
+    "name": "Click",
+    "samplesFolder" : "/samples/somethingToSay/",
+    "samples": ["clicks.wav"], 
+    "types": [
+        {
+            "name": ".",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": [0,0.5,1,1.5,2,2.5,3,3.5,4,4.5],
+            "duration": 0.1,
+            "probability": 1,
+            "attack": 0
+        }
+    ],
+    "sequences": [
+        [null, null, null],
+        [[0,0],[0,0],[0,0],[0,0]]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,1]
+        },
+        "transitionMetaSequence"
+    ],
+    "interjections": [
+        
+    ]
+}

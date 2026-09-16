@@ -1,0 +1,67 @@
+{
+    "name": "Crash",
+    "samplesFolder" : "/samples/",
+    "samples": ["crash1.wav", "crash2.wav"], 
+    "types": [
+        {
+            "name": "Xx",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        },
+        {
+            "name": "Tx",
+            "sample": 1,
+            "gain": 0.5,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null,null,null,null,null],
+        [0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        [1,null,null,null,[null,1,null,null,null,null,null,null,null],null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        { 
+            "type": "markovian",
+            "sequence": [1,0],
+            "markovMatrix": [
+                [0, 1],
+                [0.05, 0.95]
+            ]
+        },
+        {
+            "type": "sequential",
+            "sequence": [2,2]
+        }
+    ],
+    "interjections": [
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["sequences",0],
+            "probability": 0.5,
+            "injection": [null,null,null,null,null,null,null,null]
+        },
+        {
+            "type": "change",
+            "where": ["metaSequences",1,"markovMatrix"],
+            "probability": 0.3,
+            "injection": [
+                [0, 1],
+                [0, 1]
+            ]
+        }
+    ]
+}

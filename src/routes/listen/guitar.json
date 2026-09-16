@@ -1,0 +1,273 @@
+{
+    "name": "Guitar",
+    "samplesFolder" : "/samples/",
+    "samples": ["guitarHarmonics1.wav", "guitarHarmonics2.wav", "guitarHarmonicsTriplet.wav", "guitarStrumSingle.wav", "guitarStrumDouble.wav", "bowedGuitar.wav"],
+    "types": [
+        {
+            "name": "a1",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "b1",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 1,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "c1",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 2,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "a2",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "b2",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 1,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "c2",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 2,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "a3",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "b3",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0.1666666,
+            "offset": 0.666666,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "c3",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0.3333333,
+            "offset": 1.3333333,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "/",
+            "sample": 3,
+            "gain": [0.6,0.8,1],
+            "delay": 0,
+            "offset": [0,1,2,3],
+            "duration": [1,0.1,0.05],
+            "probability": 1
+        },
+        {
+            "name": "//",
+            "sample": 4,
+            "gain": [0.6,0.8,1],
+            "delay": 0,
+            "offset": [0,1,2,3],
+            "duration": [1,0.1,0.05],
+            "probability": 1
+        },
+        {
+            "name": "Solo",
+            "sample": 5,
+            "gain": 12,
+            "delay": 0,
+            "offset": [0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 272, 288],
+            "duration": 576,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null],
+        [0,1,2],
+        [[10,10,9,9]],
+        [11,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        [11,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0,0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,1]
+        },
+        {
+            "type": "markovian",
+            "sequence": [0,2],
+            "markovMatrix": [
+                [0.7, 0.3],
+                [0.3, 0.7]
+            ]
+        },
+        {
+            "type": "sequential",
+            "sequence": [3,4]
+        },
+        {
+            "type": "sequential",
+            "sequence": [4,3]
+        }
+    ],
+    "interjections": [
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [0]
+                },
+                "probability": 0.25,
+                "sequence": [[3,0,3]]
+        },
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [0]
+                },
+                "probability": 0.25,
+                "sequence": [[0,3]]
+        },
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [1]
+                },
+                "probability": 0.25,
+                "sequence": [[1,1,4]]
+        },
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [1]
+                },
+                "probability": 0.25,
+                "sequence": [[4,4]]
+        },
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [2]
+                },
+                "probability": 0.25,
+                "sequence": [[2,5,5]]
+        },
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [2]
+                },
+                "probability": 0.25,
+                "sequence": [[5,2]]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [[10,10]]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [[9,null,10]]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [10]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [[null, 9, [9,10]]]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [[9,9,null,9,9]]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [[null,10]]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [null]
+        },
+        {
+            "when": 
+            {
+                "sequences": [2],
+                "beats": [0]
+            },
+            "probability": 0.125,
+            "sequence": [9]
+        }
+
+    ],
+    "mutations": [
+    ]
+}

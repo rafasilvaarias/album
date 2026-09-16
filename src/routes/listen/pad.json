@@ -1,0 +1,35 @@
+{
+    "name": "Sonar",
+    "samplesFolder" : "/samples/",
+    "samples": ["padSoft(EQ).wav", "padHard(EQ).wav"],
+    "types": [
+        {
+            "name": "om",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null, null, null, null, null],
+        [0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        [0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0]
+        },
+        {
+            "type": "random",
+            "sequence": [1,2]
+        }
+    ],
+    "interjections": [
+    ],
+    "mutations": [
+    ]
+}

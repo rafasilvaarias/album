@@ -1,0 +1,90 @@
+{
+    "name": "Synth",
+    "samplesFolder" : "/samples/",
+    "samples": ["synth1.wav","synthT12.wav","synth2.wav","synthT23.wav","synth3.wav"],
+    "types": [
+        {
+            "name": "1",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        },
+        {
+            "name": "12",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 32,
+            "probability": 1
+        },
+        {
+            "name": "2",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        },
+        {
+            "name": "23",
+            "sample": 3,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 32,
+            "probability": 1
+        },
+        {
+            "name": "3",
+            "sample": 4,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null,null,null,null,null,null,null],
+        [0,null,null,null,null,null,null,null,0,null,null,null,null,null,null,null],
+        [1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        [2,null,null,null,null,null,null,null,2,null,null,null,null,null,null,null],
+        [3,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        [4,null,null,null,null,null,null,null,4,null,null,null,null,null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,1]
+        },
+        { 
+            "type": "markovian",
+            "sequence": [2,3],
+            "markovMatrix": [
+                [0, 1],
+                [0, 1]
+            ]
+        },
+        { 
+            "type": "markovian",
+            "sequence": [4,5],
+            "markovMatrix": [
+                [0, 1],
+                [0, 1]
+            ]
+        }
+    ],
+    "interjections": [
+    ],
+    "mutations": [
+    ]
+}

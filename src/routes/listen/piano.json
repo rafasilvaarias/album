@@ -1,0 +1,89 @@
+{
+    "name": "Piano",
+    "samplesFolder" : "/samples/",
+    "samples": ["pianoLoop(EQ).wav", "pianoTritone(EQ).wav"],
+    "types": [
+        {
+            "name": "O",
+            "sample": 0,
+            "minGain": 0.8, "maxGain": 1.2,
+            "delay": 0,
+            "offset": [0,16,32,48,64,80,96,112],
+            "duration": 13,
+            "probability": 1
+        },
+        {
+            "name": "Ó",
+            "sample": 0,
+            "minGain": 0.8, "maxGain": 1.2,
+            "delay": 0,
+            "offset": [13,29,45,61,77,93,109,125],
+            "duration": 3,
+            "probability": 1
+        },
+        {
+            "name": "Ɵ",
+            "sample": 1,
+            "minGain": 1, "maxGain": 1.2,
+            "delay": 0,
+            "offset": [0,16,32,48,64,80],
+            "duration": 13,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null, null, null, null, null],
+        [1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null],
+        [1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null],
+        [1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null],
+        [1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null],
+        [1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null],
+        [1,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null],
+        [0,null,null,null,null,null,null,null,null,null,null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0]
+        },
+        {
+            "type": "random",
+            "sequence": [1,2,3,4,5,6]
+        },
+        {
+            "type": "markovian",
+            "sequence": [7,1,2,3,4,5,6],
+            "markovMatrix": [
+                [0,1,0,0,0,0,0],
+                [0,0,0.2,0.2,0.2,0.2,0.2],
+                [0,0.2,0,0.2,0.2,0.2,0.2],
+                [0,0.2,0.2,0,0.2,0.2,0.2],
+                [0,0.2,0.2,0.2,0,0.2,0.2],
+                [0,0.2,0.2,0.2,0.2,0,0.2],
+                [0,0.2,0.2,0.2,0.2,0.2,0]
+            ]
+        }
+    ],
+    "interjections": [
+        {
+                "when": {
+                    "sequences": [2,4,6],
+                    "beats": [3]
+                },
+                "probability": 0.05,
+                "sequence": [2]
+        }
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["metaSequences",3,"markovMatrix"],
+            "probability": 0.6,
+            "injection": [
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1]
+            ]
+        }
+    ]
+}

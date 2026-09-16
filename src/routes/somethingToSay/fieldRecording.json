@@ -1,0 +1,34 @@
+{
+    "name": "fieldRecording",
+    "samplesFolder" : "/samples/somethingToSay/",
+    "samples": ["sampleName"], 
+    "types": [
+        {
+            "name": ".",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offsetMin": 0, "offsetMax": 128,
+            "duration": 32,
+            "probability": 1,
+            "attack": 0
+        }
+    ],
+    "sequences": [
+        [null, null, null],
+        "sequence1"
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,1]
+        }
+    ],
+    "interjections": [
+        
+    ]
+}

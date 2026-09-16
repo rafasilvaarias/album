@@ -1,0 +1,129 @@
+{
+    "name": "Bass",
+    "samplesFolder" : "/samples/",
+    "samples": ["bassPattern.wav", "bassFill.wav", "bassFill2.wav", "bassLowNote2.wav"], 
+    "types": [
+        {
+            "name": "O",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 2,
+            "probability": 1
+        },
+        {
+            "name": "o",
+            "sample": 0,
+            "gain": 1,
+            "delay":[0.03,0.06,0.09,0.12],
+            "offset": 2,
+            "duration": 2,
+            "probability": 1
+        },
+        {
+            "name": "O1",
+            "sample": 1,
+            "gainMin": 0.85, "gainMax": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 1,
+            "probability": 1
+        },
+        {
+            "name": "o1",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 1,
+            "duration": 1,
+            "probability": 1
+        },
+        {
+            "name": "o1",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 2,
+            "duration": 1,
+            "probability": 1
+        },
+        {
+            "name": "O2",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 1,
+            "probability": 1
+        },
+        {
+            "name": "o2",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 1,
+            "duration": 1,
+            "probability": 1
+        },
+        {
+            "name": "o2",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 2,
+            "duration": 1,
+            "probability": 1
+        },
+        {
+            "name": "lN",
+            "sample": 3,
+            "gain": 1.3,
+            "delay": 0,
+            "offset": 0,
+            "duration": 16,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null,null,null,null,null],
+        [0,1,1,0,1,1,0,1,1,0,1,1,1,2,3,4],
+        [0,1,1,0,1,1,0,1,1,0,1,1,1,5,6,7],
+        [0,1,1,0,1,1,0,1,1,0,1,1,1,2,3,4],
+        [0,1,1,0,1,1,0,1,1,0,1,1,1,5,6,7],
+        [[0,0],1,0],
+        [8,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,2,3,4]
+        },
+        {
+            "type": "sequential",
+            "sequence": [6,6,6]
+        }
+    ],
+    "interjections": [
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [1, 2, 4, 5, 7, 8, 10, 11, 12]
+                },
+                "probability":  0.05,
+                "sequence": [[1,1]]
+        }
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["metaSequences",1,"sequence"],
+            "probability": 0.5,
+            "injection": [1,2]
+        }
+    ]
+}

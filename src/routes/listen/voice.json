@@ -1,0 +1,186 @@
+{
+    "name": "Voice",
+    "samplesFolder" : "/samples/vocal/",
+    "samples": ["changedByEM","changedByEM","changedByEM","changedByEM","changedByEM","changedByEM","glotalN1.wav","Aaaa2.wav","interjection.wav","alphabetSlow.wav","alphabetFast.wav"], 
+    "types": [
+        {
+            "name": "I",
+            "sample": 0,
+            "gain": 1.4,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "II",
+            "sample": 1,
+            "gain": 1.4,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "III",
+            "sample": 2,
+            "gain": 1.4,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "IV",
+            "sample": 3,
+            "gain": 1.4,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "V",
+            "sample": 4,
+            "gain": 1.4,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "VI",
+            "sample": 5,
+            "gain": 1.4,
+            "delay": 0,
+            "offset": 0,
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "<<",
+            "sample": 6,
+            "gain": 0.45,
+            "delay": 0,
+            "offset": 0,
+            "duration": 32,
+            "probability": 1
+        },
+        {
+            "name": "!!",
+            "sample": 8,
+            "gain": 1.15,
+            "delay": [0,0.025,0.05,0.075,0.1],
+            "offset": [0,2,4,6,8,10,12,14,16,18,20,22,24,26],
+            "duration": 2,
+            "probability": 0.2
+        },
+        {
+            "name": "!!",
+            "sample": 8,
+            "gain": 1.15,
+            "delay": [0,0.025,0.05,0.075,0.1],
+            "offset": [0,2,4,6,8,10,12,14,16,18,20,22,24,26],
+            "duration": 2,
+            "probability": 0.95
+        }
+    ],
+    "sequences": [
+        [null,null,null,null,null,null,null,null],
+        [0,null,null,null,[null,7],[null,7],[null,7],[null,7]],
+        [2,null,null,null,[null,7],[null,7],[null,7],[null,7]],
+        [4,null,null,null,[null,7],[null,7],[null,7],[null,7]],
+        [0,null,null,null,[null,7],[null,7],[null,7],[null,7],[null,7],[null,7],[null,7],[null,7],[null,7],[null,7],[null,7],[null,7]],
+        [[null,7],null,[null,7],null,[null,7],[null,7],[null,7],null,null,[null,7],null,[null,7],[null,7],null],
+        [6,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        [[8,[8,7]],[null,7],[8,[7,7]],[null,7],[8,[7,7]],[null,7],[8,[8,7]],[null,7]],
+        "changedByEM",
+        "changedByEM"
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0]
+        },
+        {
+            "type": "markovian",
+            "sequence": [1,2,3,4],
+            "markovMatrix": [
+                [0,0.75,0.25,0],
+                [0.25,0,0.75,0],
+                [0.8,0,0,0.2],
+                [0.75,0.25,0,0]
+            ]
+        },
+        {
+            "type": "sequential",
+            "sequence": [5,5]
+        },
+        {
+            "type": "markovian",
+            "sequence": [6,0],
+            "markovMatrix": [
+                [0,1],
+                [0,1]
+            ]
+        },
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [8,8]
+        },
+        {
+            "type": "sequential",
+            "sequence": [9,9]
+        }
+    ],
+    "interjections": [
+        {
+                "when": {
+                    "sequences": [1],
+                    "beats": [0]
+                },
+                "probability": 0.5,
+                "sequence": [1]
+        },
+        {
+                "when": {
+                    "sequences": [2],
+                    "beats": [0]
+                },
+                "probability": 0.5,
+                "sequence": [3]
+        },
+        {
+                "when": {
+                    "sequences": [2],
+                    "beats": [0]
+                },
+                "probability": 0.5,
+                "sequence": [5]
+        }
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["samples",6],
+            "probability": 0.25,
+            "injection": "glotalN2.wav"
+        },
+        {
+            "type": "change",
+            "where": ["samples",6],
+            "probability": 0.25,
+            "injection": "glotalN3.wav"
+        },
+        {
+            "type": "change",
+            "where": ["samples",6],
+            "probability": 0.25,
+            "injection": "glotalN4.wav"
+        }
+    ]
+}

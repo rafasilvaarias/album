@@ -1,0 +1,37 @@
+{
+    "name": "Crash Drums",
+    "samplesFolder" : "/samples/",
+    "samples": ["distortedDrumming.wav"], 
+    "types": [
+        {
+            "name": "@@",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 2,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null,null,null,null,null,null],
+        [[0,0],[0,0]]
+        ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0]
+        },
+        "changedByEM"
+    ],
+    "interjections": [
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["sequences",1],
+            "probability": 0.3,
+            "injection": [[0,0]]
+        }
+    ]
+}

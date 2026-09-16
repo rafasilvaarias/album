@@ -1,0 +1,161 @@
+{
+    "name": "Ride",
+    "samplesFolder" : "/samples/",
+    "samples": ["rideLoop.wav", "rideReverse.wav", "rideHit.wav"], 
+    "types": [
+        {
+            "name": "iB",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+            "duration": 8,
+            "probability": 1,
+            "attack": 0,
+            "decay": 0
+        },
+        {
+            "name": "oB",
+            "sample": 0,
+            "gain": 1,
+            "delay": 0,
+            "offset": [0.5,1.5,2.5,3.5],
+            "duration": 8,
+            "probability": 1
+        },
+        {
+            "name": "HH",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": [2,0.5,0.66],
+            "probability": 1
+        },
+        {
+            "name": "-<",
+            "sample": 1,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": [1,2,2,2],
+            "probability": [0.5,0.5,0.9]
+        },
+        {
+            "name": ".v",
+            "sample": 1,
+            "gain": [0.2,0.5,0.7],
+            "delay": 0,
+            "offset": 0,
+            "duration": [0.5, 1],
+            "probability": 0.5
+        }
+    ],
+    "sequences": [
+        [null,null,null,null,null],
+        [0,null,null,null,null,null,null,null],
+        [0,null,null,null,null,null,null,null],
+        [0,0,0,0,0,0,0,0],
+        [0,null,null,null,null,null,null,null],
+        [3, null,[[2, 3], null], [[3,null], 0]],
+        [[{
+            "name": "HH",
+            "sample": 2,
+            "gain": 1,
+            "delay": 0,
+            "offset": 0,
+            "duration": 0.125,
+            "probability": 1
+        },1],2,null,null,null,null,null,null],
+        [null,null,null,null,null,null,null,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,2,3,4]
+        },
+        {
+            "type": "sequential",
+            "sequence": [5]
+        },
+        {
+            "type": "markovian",
+            "sequence": [6,7],
+            "markovMatrix": [
+                [0, 1],
+                [0, 1]
+            ]
+
+        }
+    ],
+    "interjections": [
+        {
+                "when": {
+                    "sequences": [1,2,3,4],
+                    "beats": [1, 2, 3, 5]
+                },
+                "probability": 0.05,
+                "sequence": [1,null,0]
+        },
+        {
+                "when": {
+                    "sequences": [1,2,3,4],
+                    "beats": [5]
+                },
+                "probability": 0.05,
+                "sequence": [1,null,null]
+        },
+        {
+                "when": {
+                    "sequences": [2, 4],
+                    "beats": [4]
+                },
+                "probability": 0.1,
+                "sequence": [0,[[2,1],1],[1,2],1]
+        },
+        {
+                "when": {
+                    "sequences": [1, 3],
+                    "beats": [2]
+                },
+                "probability": 0.1,
+                "sequence": [3, null, 0]
+        },
+        {
+                "when": {
+                    "sequences": [1, 3],
+                    "beats": [2]
+                },
+                "probability": 0.1,
+                "sequence": [3, 0]
+        },
+        {
+                "when": {
+                    "sequences": [1, 3],
+                    "beats": [2]
+                },
+                "probability": 0.1,
+                "sequence": [3, [null,0], 0]
+        },
+        {
+                "when": {
+                    "sequences": [1, 2, 3, 4],
+                    "beats": [3,4,5]
+                },
+                "probability": 0.05,
+                "sequence": [0]
+        }
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["sequences",0,6],
+            "probability": 0,
+            "injection": [1 ,1]
+        }
+    ]
+}

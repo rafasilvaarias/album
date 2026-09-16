@@ -1,0 +1,153 @@
+{
+    "name": "hiHat",
+    "samplesFolder" : "/samples/",
+    "samples": ["hiHatC.wav","hiHatCH.wav","hiHatO.wav", "hiHatFill.wav"], 
+    "types": [
+        {
+            "name": "ts",
+            "sample": 0,
+            "gain": [1,0.6],
+            "delay": [0.05,0.025,0.1],
+            "offset": [0,0.5,1,1.5,2],
+            "duration": 0.5,
+            "probability": 1
+        },
+        {
+            "name": "Ts",
+            "sample": 1,
+            "gain": [0.8,0.6],
+            "delay": 0,
+            "offset": 0,
+            "duration": 1.5,
+            "probability": 1
+        },
+        {
+            "name": "TS",
+            "sample": 2,
+            "gain": 0.25,
+            "delay": 0,
+            "offset": 0,
+            "duration": 2,
+            "probability": 1
+        },
+        {
+            "name": "tt",
+            "sample": 3,
+            "gain": 0.55,
+            "delay": 0,
+            "offset": 0,
+            "duration": 2,
+            "probability": 1
+        }
+    ],
+    "sequences": [
+        [null,null,null,null],
+        [0,null,null,null,null,null,null,null],
+        [0,null,null,null,null,null,null,null],
+        [3,null]
+    ],
+    "metaSequences": [
+        {
+            "type": "sequential",
+            "sequence": [0,0,0]
+        },
+        {
+            "type": "sequential",
+            "sequence": [1,1,1,1]
+        },
+        { 
+            "type": "markovian",
+            "sequence": [3,0],
+            "markovMatrix": [
+                [0, 1],
+                [0.01, 0.99]
+            ]
+        }
+    ],
+    "interjections": [
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [2,4,6]
+                },
+                "probability": 0.1,
+                "sequence": [0]
+        },
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [3,5,1]
+                },
+                "probability": 0.15,
+                "sequence": [[null,null,null,null,1,null,null],0]
+        },
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [3,5,1]
+                },
+                "probability": 0.15,
+                "sequence": [[null,null,null,null,null,1,null,null,null],0]
+        },
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [3,5,7,1]
+                },
+                "probability": 0.05,
+                "sequence": [[null,null,null,null,1,null,null]]
+        },
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [3,5,7,1]
+                },
+                "probability": 0.05,
+                "sequence": [[null,null,null,null,null,1,null,null,null]]
+        },
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [4]
+                },
+                "probability": 0.2,
+                "sequence": [2,null,null,[null,null,null,null,0,null,null]]
+        },
+        {
+                "when": {
+                    "sequences": [1,2],
+                    "beats": [4]
+                },
+                "probability": 0.2,
+                "sequence": [2,2,null,[null,null,null,null,0,null,null]]
+        }
+
+    ],
+    "mutations": [
+        {
+            "type": "change",
+            "where": ["interjections",3,"probability"],
+            "probability": 0.2,
+            "injection": 1
+        },
+        {
+            "type": "change",
+            "where": ["interjections",4,"probability"],
+            "probability": 0.2,
+            "injection": 0.5
+        },
+        {
+            "type": "change",
+            "where": ["interjections",5,"probability"],
+            "probability": 0.2,
+            "injection": 1
+        },
+        {
+            "type": "change",
+            "where": ["interjections",6,"probability"],
+            "probability": 0.2,
+            "injection": 1
+        }
+
+    ]
+}
