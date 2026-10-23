@@ -1,0 +1,21 @@
+{
+  "samplesFolder": "/samples/piece-02/",
+  "samples": ["kick.wav"],
+  "types": [
+    { "name": "K", "sample": 0, "gain": 1, "offset": 0, "duration": 1, "attack": 0 }
+  ],
+  "sequences": [
+    [null]
+  ],
+  "metaSequences": [
+    { "type": "sequential", "sequence": [0] },
+    "a1",
+    "a2",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f1",
+    "f2"
+  ]
+}

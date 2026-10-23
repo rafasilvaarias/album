@@ -1,0 +1,20 @@
+{
+  "samplesFolder": "/samples/piece-02/",
+  "samples": ["snare.wav"],
+  "types": [
+  ],
+  "sequences": [
+    [null]
+  ],
+  "metaSequences": [
+    { "type": "sequential", "sequence": [0] },
+    "a1",
+    "a2",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f1",
+    "f2"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "samplesFolder": "/samples/piece-02/",
+  "samples": ["voice.wav"],
+  "types": [
+  ],
+  "sequences": [
+    [null]
+  ],
+  "metaSequences": [
+    { "type": "sequential", "sequence": [0] },
+    "b"
+  ]
+}

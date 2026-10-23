@@ -1,0 +1,13 @@
+{
+  "samplesFolder": "/samples/piece-02/",
+  "samples": ["hiHat.wav"],
+  "types": [
+    { "name": "!", "sample": 0, "gain": 1, "offset": 80, "duration": 1, "attack": 0 }
+  ],
+  "sequences": [
+    [null]
+  ],
+  "metaSequences": [
+    { "type": "sequential", "sequence": [0] }
+  ]
+}
