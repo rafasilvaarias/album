@@ -160,12 +160,12 @@ function planBreak(plan: Plan, rng: Rng) {
 
 function planStructure(plan: Plan, rng: Rng) {
   const parts = rng.shuffle<{ name: ASectionName; time: number }>([
-    /*{ name: "maximalist", time: rng.int(7, 15) * BAR },
+    { name: "maximalist", time: rng.int(7, 15) * BAR },
     { name: "maximalist", time: rng.int(4, 9) * BAR },
     { name: "minimalist", time: rng.int(7, 15) * BAR },
     { name: "tandem", time: rng.int(2, 7) * BAR },
     { name: "disjointed", time: rng.int(7, 11) * BAR },
-    { name: "repetition", time: rng.pick([4, 6, 8, 10]) * BAR }*/
+    { name: "repetition", time: rng.pick([4, 6, 8, 10]) * BAR }
   ]);
 
   //middle transition
@@ -184,7 +184,7 @@ function planStructure(plan: Plan, rng: Rng) {
   }
 
   plan.middlePoint = plan.aStructure[plan.aStructure.length - 1].end;
-  plan.endPoint = plan.middlePoint + BAR * rng.pick([14, 16, 18]);
+  plan.endPoint = plan.middlePoint + BAR * rng.pick([16, 18, 20, 21]);
 
   plan.structure = [
     { name: "A", start: 0, end: plan.middlePoint },

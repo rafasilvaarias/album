@@ -9,7 +9,7 @@ export const b: SectionHandler<Tracks, SectionName, Plan> = ({ s, rng, sched }) 
   sched.seq(s.start, "pad", "b");
 
   const switchingTime = Math.floor((s.end - s.start) * 0.4 / BAR) * BAR;
-  const endBreak = (s.end - s.start) - (BAR * rng.pick([1,2]));
+  const endBreak = (s.end - s.start) - (BAR * rng.pick([1,2,3,4]));
   const startBreak = BAR * rng.pick([0,1,1,2,2,2,3]);
 
   let altBreak = false;
